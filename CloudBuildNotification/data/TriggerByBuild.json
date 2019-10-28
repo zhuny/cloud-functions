@@ -1,0 +1,99 @@
+{
+  "request": {
+    "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
+    "attributes": {
+      "buildId": "01234567-89ab-cdef-0123-456789abcdef",
+      "status": "SUCCESS"
+    },
+    "data": {
+      "createTime": "2019-10-27T16:24:03.220707Z",
+      "finishTime": "2019-10-27T16:26:06.311236Z",
+      "id": "01234567-89ab-cdef-0123-456789abcdef",
+      "logUrl": "https://console.cloud.google.com/gcr/builds/01234567-89ab-cdef-0123-456789abcdef?project=012345678901",
+      "logsBucket": "gs://012345678901.cloudbuild-logs.googleusercontent.com",
+      "options": {
+        "logStreamingOption": "STREAM_OFF",
+        "logging": "LEGACY",
+        "substitutionOption": "ALLOW_LOOSE"
+      },
+      "projectId": "my-project-123456",
+      "results": {
+        "buildStepImages": [
+          "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+        ],
+        "buildStepOutputs": []
+      },
+      "sourceProvenance": {},
+      "startTime": "2019-10-27T16:24:04.405559961Z",
+      "status": "SUCCESS",
+      "steps": [
+        {
+          "args": [
+            "..."
+          ],
+          "id": "fetcher",
+          "name": "gcr.io/cloud-builders/gcs-fetcher",
+          "pullTiming": {
+            "endTime": "2019-10-27T16:24:05.299263221Z",
+            "startTime": "2019-10-27T16:24:05.206274152Z"
+          },
+          "status": "SUCCESS",
+          "timing": {
+            "endTime": "2019-10-27T16:24:12.683477454Z",
+            "startTime": "2019-10-27T16:24:05.206274152Z"
+          }
+        },
+        {
+          "args": [
+            "..."
+          ],
+          "entrypoint": "commonbuild",
+          "id": "builder",
+          "name": "gcr.io/gae-runtimes/python37_app_builder:python37_20190907_3_7_4_RC00",
+          "pullTiming": {
+            "endTime": "2019-10-27T16:24:13.972256498Z",
+            "startTime": "2019-10-27T16:24:12.683540957Z"
+          },
+          "status": "SUCCESS",
+          "timing": {
+            "endTime": "2019-10-27T16:26:05.279581796Z",
+            "startTime": "2019-10-27T16:24:12.683540957Z"
+          }
+        }
+      ],
+      "substitutions": {
+        "_ZEUS_BUCKET": "staging.my-project-123456.appspot.com",
+        "_ZEUS_CACHE_LOCATION": "asia.gcr.io/my-project-123456/app-engine-tmp/build-cache/ttl-7d",
+        "_ZEUS_ENTRYPOINT": "",
+        "_ZEUS_GCR_DOMAIN": "asia.gcr.io",
+        "_ZEUS_IMAGE_NAME": "asia.gcr.io/my-project-123456/app-engine-tmp/app/ttl-2h:01234567-89ab-cdef-0123-456789abcdef",
+        "_ZEUS_MANIFEST": "0a/01234567-89ab-cdef-0123-456789abcdef/manifest.json",
+        "_ZEUS_SERVICE_ID": "default",
+        "_ZEUS_SHOULD_GET_ENTRYPOINT_FROM_APP_YAML": "false",
+        "_ZEUS_SKIP_CACHE_BOOLEAN": "false",
+        "_ZEUS_SOURCE_LOCATION": "gs://staging.my-project-123456.appspot.com/0a/01234567-89ab-cdef-0123-456789abcdef/manifest.json",
+        "_ZEUS_SOURCE_TYPE": "Manifest",
+        "_ZEUS_USE_CACHE": "cache",
+        "_ZEUS_USE_CACHE_BOOLEAN": "true",
+        "_ZEUS_ZIPFILE": ""
+      },
+      "timeout": "600s",
+      "timing": {
+        "BUILD": {
+          "endTime": "2019-10-27T16:26:05.341793960Z",
+          "startTime": "2019-10-27T16:24:05.204844509Z"
+        }
+      }
+    }
+  },
+  "event": {
+    "event_id": 123456789012345,
+    "event_type": "google.pubsub.topic.publish",
+    "resource": {
+      "name": "projects/my-project-123456/topics/cloud-builds",
+      "service": "pubsub.googleapis.com",
+      "type": "type.googleapis.com/google.pubsub.v1.PubsubMessage"
+    },
+    "timestamp": "2019-10-27T16:26:07.369Z"
+  }
+}
