@@ -1,4 +1,14 @@
 {
+  "event": {
+    "event_id": 123456789012345,
+    "event_type": "google.pubsub.topic.publish",
+    "resource": {
+      "name": "projects/my-project-123456/topics/cloud-builds",
+      "service": "pubsub.googleapis.com",
+      "type": "type.googleapis.com/google.pubsub.v1.PubsubMessage"
+    },
+    "timestamp": "2019-10-27T16:26:07.369Z"
+  },
   "request": {
     "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
     "attributes": {
@@ -85,15 +95,5 @@
         }
       }
     }
-  },
-  "event": {
-    "event_id": 123456789012345,
-    "event_type": "google.pubsub.topic.publish",
-    "resource": {
-      "name": "projects/my-project-123456/topics/cloud-builds",
-      "service": "pubsub.googleapis.com",
-      "type": "type.googleapis.com/google.pubsub.v1.PubsubMessage"
-    },
-    "timestamp": "2019-10-27T16:26:07.369Z"
   }
 }
