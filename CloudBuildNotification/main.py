@@ -5,6 +5,7 @@ import requests
 
 
 class MsgCollectionTemplate:
+    # PR 생성될 때
     trigger_by_pr = (
         "*Google Cloud Build*\n"
         "Project : [{projectId}]({logUrl})\n"
@@ -12,6 +13,9 @@ class MsgCollectionTemplate:
         "[PR#{substitutions[_PR_NUMBER]}]({substitutions[_HEAD_REPO_URL]}/pull/{substitutions[_PR_NUMBER]}) : *{substitutions[_BASE_BRANCH]} <- {substitutions[BRANCH_NAME]}#{substitutions[SHORT_SHA]}*\n"
         "Status : *{status}*"
     )
+
+    # 사실 머지라기 보다는 (마스터)브랜치 푸시 될 때
+    # 그래도 _HEAD_REPO_URL는 있어야 되는거 아닌가?
     trigger_by_merge = (
         "*Google Cloud Build*\n"
         "Project : [{projectId}]({logUrl})\n"
@@ -19,6 +23,8 @@ class MsgCollectionTemplate:
         "Commit : {substitutions[BRANCH_NAME]}#{substitutions[SHORT_SHA]}\n"
         "Status : *{status}*"
     )
+
+    # 순수하게 gcloud app deploy 할 때
     trigger_by_build = (
         "*Google Cloud Build*\n"
         "Project : [{projectId}]({logUrl})\n"
