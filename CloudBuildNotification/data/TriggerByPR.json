@@ -1,0 +1,63 @@
+{
+  "event": {
+    "event_id": 123,
+    "event_type": "google.pubsub.topic.publish",
+    "resource": {
+      "name": "projects/my-project-123456/topics/cloud-builds",
+      "service": "pubsub.googleapis.com",
+      "type": "type.googleapis.com/google.pubsub.v1.PubsubMessage"
+    },
+    "timestamp": "2019-10-29T01:37:01.354Z"
+  },
+  "request": {
+    "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
+    "attributes": {
+      "buildId": "01234567-89ab-cdef-0123-456789abcdef",
+      "status": "WORKING"
+    },
+    "data": {
+      "buildTriggerId": "01234567-89ab-cdef-0123-456789abcdef",
+      "createTime": "2019-10-29T01:36:58.597142879Z",
+      "id": "01234567-89ab-cdef-0123-456789abcdef",
+      "logUrl": "https://console.cloud.google.com/gcr/builds/01234567-89ab-cdef-0123-456789abcdef?project=123123",
+      "logsBucket": "gs://123123.cloudbuild-logs.googleusercontent.com",
+      "options": {
+        "logging": "LEGACY",
+        "substitutionOption": "ALLOW_LOOSE"
+      },
+      "projectId": "my-project-123456",
+      "source": {
+        "storageSource": {
+          "bucket": "123123.cloudbuild-source.googleusercontent.com",
+          "object": "0123456789abcdef0123456789abcdef01234567-89abcdef-0123-4567-89ab-cdef01234567.tar.gz"
+        }
+      },
+      "sourceProvenance": {
+        "resolvedStorageSource": {
+          "bucket": "123123.cloudbuild-source.googleusercontent.com",
+          "generation": "321",
+          "object": "0123456789abcdef0123456789abcdef01234567-89abcdef-0123-4567-89ab-cdef01234567.tar.gz"
+        }
+      },
+      "startTime": "2019-10-29T01:37:00.350582657Z",
+      "status": "WORKING",
+      "steps": [
+      ],
+      "substitutions": {
+        "BRANCH_NAME": "fix/data",
+        "COMMIT_SHA": "02468ace13579bdf02468ace13579bdf02468ace",
+        "REPO_NAME": "cloud-functions",
+        "REVISION_ID": "02468ace13579bdf02468ace13579bdf02468ace",
+        "SHORT_SHA": "02468ac",
+        "_BASE_BRANCH": "master",
+        "_HEAD_BRANCH": "fix/data",
+        "_HEAD_REPO_URL": "https://github.com/zhuny/cloud-functions",
+        "_PR_NUMBER": "25"
+      },
+      "tags": [
+        "trigger-01234567-89ab-cdef-0123-456789abcdef"
+      ],
+      "timeout": "600s"
+    }
+  }
+}

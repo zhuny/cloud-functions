@@ -1,0 +1,101 @@
+{
+  "event": {
+    "event_id": 234,
+    "event_type": "google.pubsub.topic.publish",
+    "resource": {
+      "name": "projects/my-project-123456/topics/cloud-builds",
+      "service": "pubsub.googleapis.com",
+      "type": "type.googleapis.com/google.pubsub.v1.PubsubMessage"
+    },
+    "timestamp": "2019-10-29T02:34:58.522Z"
+  },
+  "request": {
+    "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
+    "attributes": {
+      "buildId": "01234567-89ab-cdef-0123-456789abcdef",
+      "status": "SUCCESS"
+    },
+    "data": {
+      "buildTriggerId": "01234567-89ab-cdef-0123-456789abcdef",
+      "createTime": "2019-10-29T02:33:21.274514240Z",
+      "finishTime": "2019-10-29T02:34:57.534229Z",
+      "id": "01234567-89ab-cdef-0123-456789abcdef",
+      "logUrl": "https://console.cloud.google.com/gcr/builds/01234567-89ab-cdef-0123-456789abcdef?project=012345678901",
+      "logsBucket": "gs://012345678901.cloudbuild-logs.googleusercontent.com",
+      "options": {
+        "logging": "LEGACY",
+        "substitutionOption": "ALLOW_LOOSE"
+      },
+      "projectId": "my-project-123456",
+      "results": {
+        "buildStepImages": [
+          "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+        ]
+      },
+      "source": {
+        "storageSource": {
+          "bucket": "012345678901.cloudbuild-source.googleusercontent.com",
+          "object": "0123456789abcdef0123456789abcdef01234567-89abcdef-0123-4567-89ab-cdef01234567.tar.gz"
+        }
+      },
+      "sourceProvenance": {
+        "fileHashes": {
+          "gs://012345678901.cloudbuild-source.googleusercontent.com/0123456789abcdef0123456789abcdef01234567-89abcdef-0123-4567-89ab-cdef01234567.tar.gz#1572316400922968": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "mjPmqXu7s10uT4XUZviMlg=="
+              }
+            ]
+          }
+        },
+        "resolvedStorageSource": {
+          "bucket": "012345678901.cloudbuild-source.googleusercontent.com",
+          "generation": "1572316400922968",
+          "object": "0123456789abcdef0123456789abcdef01234567-89abcdef-0123-4567-89ab-cdef01234567.tar.gz"
+        }
+      },
+      "startTime": "2019-10-29T02:33:22.743853081Z",
+      "status": "SUCCESS",
+      "steps": [
+        {
+          "args": [
+            "app",
+            "deploy"
+          ],
+          "name": "gcr.io/cloud-builders/gcloud",
+          "pullTiming": {
+            "endTime": "2019-10-29T02:33:35.894493288Z",
+            "startTime": "2019-10-29T02:33:35.812651300Z"
+          },
+          "status": "SUCCESS",
+          "timing": {
+            "endTime": "2019-10-29T02:34:56.337767578Z",
+            "startTime": "2019-10-29T02:33:35.812651300Z"
+          }
+        }
+      ],
+      "substitutions": {
+        "BRANCH_NAME": "master",
+        "COMMIT_SHA": "0123456789abcdef0123456789abcdef01234567",
+        "REPO_NAME": "ic-view-admin-gae",
+        "REVISION_ID": "0123456789abcdef0123456789abcdef01234567",
+        "SHORT_SHA": "0123456"
+      },
+      "tags": [
+        "trigger-01234567-89ab-cdef-0123-456789abcdef"
+      ],
+      "timeout": "600s",
+      "timing": {
+        "BUILD": {
+          "endTime": "2019-10-29T02:34:56.473695514Z",
+          "startTime": "2019-10-29T02:33:27.033195581Z"
+        },
+        "FETCHSOURCE": {
+          "endTime": "2019-10-29T02:33:26.976188917Z",
+          "startTime": "2019-10-29T02:33:23.883834694Z"
+        }
+      }
+    }
+  }
+}
