@@ -53,7 +53,7 @@ def cloud_build_noti(request, event):
     print(request)
     print(event)
     print(result)
-    msg = MsgCollectionTemplate.render(**result)
+    msg = MsgCollectionTemplate.render(result)
 
     if msg is None:
         return {'status': 400}
