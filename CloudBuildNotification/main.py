@@ -58,21 +58,21 @@ def cloud_build_noti(request, event):
     if msg is None:
         return {'status': 400}
 
-    telegram_url_template = "https://api.telegram.org/bot{token}/{method}"
-    telegram_url = telegram_url_template.format(
-        token=os.environ['TELEGRAM_BOT_TOKEN'],
-        method="sendMessage"
-    )
-
     r1 = requests.post(
-        telegram_url,
+        os.environ['SLACK_WEB_HOOK_URL'],
         json={
-            'chat_id': int(os.environ['TELEGRAM_BOT_CHAT_ID']),
-            'text': msg,
-            'parse_mode': "Markdown"
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": msg
+                    }
+                }
+            ]
         }
     )
 
-    return r1.json()
+    return r1.text
 
 
