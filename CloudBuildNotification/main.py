@@ -8,9 +8,9 @@ class MsgCollectionTemplate:
     # PR 생성될 때
     trigger_by_pr = (
         "*Google Cloud Build*\n"
-        "Project : [{projectId}]({logUrl})\n"
-        "Repository : [{substitutions[REPO_NAME]}]({substitutions[_HEAD_REPO_URL]})\n"
-        "[PR#{substitutions[_PR_NUMBER]}]({substitutions[_HEAD_REPO_URL]}/pull/{substitutions[_PR_NUMBER]}) : *{substitutions[_BASE_BRANCH]} <- {substitutions[BRANCH_NAME]}#{substitutions[SHORT_SHA]}*\n"
+        "Project : <{logUrl}|{projectId}>\n"
+        "Repository : <{substitutions[_HEAD_REPO_URL]}|{substitutions[REPO_NAME]}>\n"
+        "<{substitutions[_HEAD_REPO_URL]}/pull/{substitutions[_PR_NUMBER]}|PR#{substitutions[_PR_NUMBER]}> : *{substitutions[_BASE_BRANCH]} <- {substitutions[BRANCH_NAME]}#{substitutions[SHORT_SHA]}*\n"
         "Status : *{status}*"
     )
 
@@ -18,8 +18,8 @@ class MsgCollectionTemplate:
     # 그래도 _HEAD_REPO_URL는 있어야 되는거 아닌가?
     trigger_by_merge = (
         "*Google Cloud Build*\n"
-        "Project : [{projectId}]({logUrl})\n"
-        "Repository : [{substitutions[REPO_NAME]}]\n"
+        "Project : <{logUrl}|{projectId}>\n"
+        "Repository : {substitutions[REPO_NAME]}\n"
         "Commit : {substitutions[BRANCH_NAME]}#{substitutions[SHORT_SHA]}\n"
         "Status : *{status}*"
     )
@@ -27,7 +27,7 @@ class MsgCollectionTemplate:
     # 순수하게 gcloud app deploy 할 때
     trigger_by_build = (
         "*Google Cloud Build*\n"
-        "Project : [{projectId}]({logUrl})\n"
+        "Project : <{logUrl}|{projectId}>\n"
         "Build ID : {id}\n"
         "Status : *{status}*"
     )
@@ -58,21 +58,21 @@ def cloud_build_noti(request, event):
     if msg is None:
         return {'status': 400}
 
-    telegram_url_template = "https://api.telegram.org/bot{token}/{method}"
-    telegram_url = telegram_url_template.format(
-        token=os.environ['TELEGRAM_BOT_TOKEN'],
-        method="sendMessage"
-    )
-
     r1 = requests.post(
-        telegram_url,
+        os.environ['SLACK_WEB_HOOK_URL'],
         json={
-            'chat_id': int(os.environ['TELEGRAM_BOT_CHAT_ID']),
-            'text': msg,
-            'parse_mode': "Markdown"
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": msg
+                    }
+                }
+            ]
         }
     )
 
-    return r1.json()
+    return r1.text
 
 
